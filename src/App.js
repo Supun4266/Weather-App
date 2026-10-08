@@ -7,9 +7,9 @@ function App() {
   const [weather, setWeather] = useState(null);
 
   const fetchWeather = async () => {
-    const API_KEY = "0fa20a763bf18447bc0d29d6d581514f";
+    const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
 
-    const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
+    const URL = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&units=metric&appid=${API_KEY}`;
     
     try {
       const response = await axios.get(URL);
